@@ -96,9 +96,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
             // Are there any Singles at all?
             if (array_key_exists('singles', $sources)) {
-                if ($context == 'index') {
-                    $this->createSinglesList($sources);
-                }
+                $this->createSinglesList($sources);
             }
         }
     }
