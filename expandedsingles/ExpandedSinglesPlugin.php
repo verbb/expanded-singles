@@ -55,19 +55,21 @@ class ExpandedSinglesPlugin extends BasePlugin
             $criteria->sectionId = $single->id;
             $entry = $criteria->first();
 
-            $url = $entry->getCpEditUrl();
+            if ($entry) {
+                $url = $entry->getCpEditUrl();
 
-            $singles['single:'.$single->id] = array(
-                'label'     => $single->name,
-                'data'      => array('url' => $url),
-                'criteria'  => array('section' => $single),
-            );
+                $singles['single:'.$single->id] = array(
+                    'label'     => $single->name,
+                    'data'      => array('url' => $url),
+                    'criteria'  => array('section' => $single),
+                );
+            }
         }
 
         // Insert it right after 'All Entries'
         array_splice($sources, 1, 0, $singles);
 
-        // Remove original Singles lin
+        // Remove original Singles links
         unset($sources['singles']);
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
