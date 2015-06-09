@@ -42,7 +42,7 @@ class ExpandedSinglesPlugin extends BasePlugin
         );
     }
 
-    public function createSinglesList(&$sources)
+    public function createSinglesList(&$sources, $context)
     {
         $singles[] = array('heading' => 'Singles');
 
@@ -67,10 +67,12 @@ class ExpandedSinglesPlugin extends BasePlugin
         }
 
         // Insert it right after 'All Entries'
-        array_splice($sources, 1, 0, $singles);
+        if ($context == 'index') {
+            array_splice($sources, 1, 0, $singles);
 
-        // Remove original Singles links
-        unset($sources['singles']);
+            // Remove original Singles links
+            unset($sources['singles']);
+        }
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if ($this->getSettings()->redirectToEntry) {
@@ -98,7 +100,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
             // Are there any Singles at all?
             if (array_key_exists('singles', $sources)) {
-                $this->createSinglesList($sources);
+                $this->createSinglesList($sources, $context);
             }
         }
     }
