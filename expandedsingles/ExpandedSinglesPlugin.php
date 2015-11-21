@@ -13,12 +13,12 @@ class ExpandedSinglesPlugin extends BasePlugin
     }
 
     public function getDescription(){
-        return 'Show your Single entries in the Entries Index sidebar, just like Channels and Structures.';
+        return '';
     }
 
     public function getVersion()
     {
-        return '0.2.0';
+        return '0.2.1';
     }
 
     public function getSchemaVersion()
