@@ -3,18 +3,27 @@ namespace Craft;
 
 class ExpandedSinglesPlugin extends BasePlugin
 {
-    /* --------------------------------------------------------------
-    * PLUGIN INFO
-    * ------------------------------------------------------------ */
+    // =========================================================================
+    // PLUGIN INFO
+    // =========================================================================
 
     public function getName()
     {
         return Craft::t('Expanded Singles');
     }
 
+    public function getDescription(){
+        return 'Show your Single entries in the Entries Index sidebar, just like Channels and Structures.';
+    }
+
     public function getVersion()
     {
-        return '0.1';
+        return '0.2.0';
+    }
+
+    public function getSchemaVersion()
+    {
+        return '1.0.0';
     }
 
     public function getDeveloper()
@@ -25,6 +34,21 @@ class ExpandedSinglesPlugin extends BasePlugin
     public function getDeveloperUrl()
     {
         return 'http://sgroup.com.au';
+    }
+
+    public function getPluginUrl()
+    {
+        return 'https://github.com/engram-design/ExpandedSingles';
+    }
+
+    public function getDocumentationUrl()
+    {
+        return $this->getPluginUrl() . '/blob/master/README.md';
+    }
+
+    public function getReleaseFeedUrl()
+    {
+        return $this->getPluginUrl() . '/blob/master/changelog.json';
     }
 
     public function getSettingsHtml()
@@ -42,57 +66,10 @@ class ExpandedSinglesPlugin extends BasePlugin
         );
     }
 
-    public function createSinglesList(&$sources, $context)
-    {
-        $singles[] = array('heading' => 'Singles');
 
-        // Grab all the Singles
-        $singleSections = craft()->sections->getSectionsByType(SectionType::Single);
-
-        // Create list of Singles
-        foreach ($singleSections as $single) {
-            $criteria = craft()->elements->getCriteria(ElementType::Entry);
-            $criteria->sectionId = $single->id;
-            $entry = $criteria->first();
-
-            if ($entry) {
-                $url = $entry->getCpEditUrl();
-
-                $singles['single:'.$single->id] = array(
-                    'label'     => $single->name,
-                    'data'      => array('url' => $url),
-                    'criteria'  => array('section' => $single),
-                );
-            }
-        }
-
-        // Insert it right after 'All Entries'
-        if ($context == 'index') {
-            array_splice($sources, 1, 0, $singles);
-
-            // Remove original Singles links
-            unset($sources['singles']);
-        }
-
-        // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
-        if ($this->getSettings()->redirectToEntry) {
-            $js = '$(function() {' .
-                '$(document).on("click", ".content.has-sidebar #sidebar nav a[data-url]", function(e) {' .
-                    'e.preventDefault();' .
-                    '$(this).removeClass("sel");' .
-                    'location.href = $(this).attr("data-url")' .
-                '});' .
-            '});';
-
-            craft()->templates->includeJs($js);
-        }
-    }
-
-
-
-    /* --------------------------------------------------------------
-    * HOOKS
-    * ------------------------------------------------------------ */
+    // =========================================================================
+    // HOOKS
+    // =========================================================================
 
     public function modifyEntrySources(&$sources, $context)
     {
@@ -100,7 +77,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
             // Are there any Singles at all?
             if (array_key_exists('singles', $sources)) {
-                $this->createSinglesList($sources, $context);
+                craft()->expandedSingles->createSinglesList($context, $sources);
             }
         }
     }
