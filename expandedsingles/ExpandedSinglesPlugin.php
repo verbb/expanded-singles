@@ -12,13 +12,9 @@ class ExpandedSinglesPlugin extends BasePlugin
         return Craft::t('Expanded Singles');
     }
 
-    public function getDescription(){
-        return '';
-    }
-
     public function getVersion()
     {
-        return '0.2.1';
+        return '0.2.2';
     }
 
     public function getSchemaVersion()
@@ -48,7 +44,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getReleaseFeedUrl()
     {
-        return $this->getPluginUrl() . '/blob/master/changelog.json';
+        return 'https://raw.githubusercontent.com/engram-design/ExpandedSingles/blob/master/changelog.json';
     }
 
     public function getSettingsHtml()

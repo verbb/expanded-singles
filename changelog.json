@@ -1,10 +1,18 @@
 [
     {
-        "version": "0.1.0",
-        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.1.0.zip",
-        "date": "2015-06-07T12:00:00+0000",
+        "version": "0.2.2",
+        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.2.zip",
+        "date": "2016-01-13 18:15:00",
         "notes": [
-            "Initial commit"
+            "[Fixed] Fixed issue with plugin release feed url."
+        ]
+    },
+    {
+        "version": "0.2.1",
+        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.1.zip",
+        "date": "2015-11-21T13:00:00+0000",
+        "notes": [
+            "[Improved] Removed plugin description (doesn't look great)."
         ]
     },
     {
@@ -17,11 +25,11 @@
         ]
     },
     {
-        "version": "0.2.1",
-        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.1.zip",
-        "date": "2015-11-21T13:00:00+0000",
+        "version": "0.1.0",
+        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.1.0.zip",
+        "date": "2015-06-07T12:00:00+0000",
         "notes": [
-            "[Improved] Removed plugin description (doesn't look great)."
+            "Initial commit"
         ]
     }
 ]
