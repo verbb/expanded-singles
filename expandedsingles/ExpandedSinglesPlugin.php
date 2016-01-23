@@ -44,7 +44,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/engram-design/ExpandedSingles/blob/master/changelog.json';
+        return 'https://raw.githubusercontent.com/engram-design/ExpandedSingles/master/changelog.json';
     }
 
     public function getSettingsHtml()
