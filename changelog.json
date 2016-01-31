@@ -10,7 +10,7 @@
     {
         "version": "0.2.1",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.1.zip",
-        "date": "2015-11-21T13:00:00+0000",
+        "date": "2015-11-21 13:00:00",
         "notes": [
             "[Improved] Removed plugin description (doesn't look great)."
         ]
@@ -18,7 +18,7 @@
     {
         "version": "0.2.0",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.0.zip",
-        "date": "2015-11-21T12:00:00+0000",
+        "date": "2015-11-21 12:00:00",
         "notes": [
             "[Improved] Craft 2.5 compatibility, including plugin feed.",
             "[Improved] Cleanup/organise code."
@@ -27,7 +27,7 @@
     {
         "version": "0.1.0",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.1.0.zip",
-        "date": "2015-06-07T12:00:00+0000",
+        "date": "2015-06-07 12:00:00",
         "notes": [
             "Initial commit"
         ]
