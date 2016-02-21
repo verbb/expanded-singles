@@ -1,5 +1,13 @@
 [
     {
+        "version": "0.2.3",
+        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.3.zip",
+        "date": "2016-02-21 13:30:00",
+        "notes": [
+            "[Fixed] Fixed issue when disabling a single, it would disappear from the sidebar in Entries Index [#2](https://github.com/engram-design/ExpandedSingles/issues/2)."
+        ]
+    },
+    {
         "version": "0.2.2",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.2.zip",
         "date": "2016-01-13 18:15:00",
