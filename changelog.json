@@ -2,7 +2,7 @@
     {
         "version": "0.2.3",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.3.zip",
-        "date": "2016-02-21 13:30:00",
+        "date": "2016-02-21T13:30:00+10:00",
         "notes": [
             "[Fixed] Fixed issue when disabling a single, it would disappear from the sidebar in Entries Index [#2](https://github.com/engram-design/ExpandedSingles/issues/2)."
         ]
@@ -10,7 +10,7 @@
     {
         "version": "0.2.2",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.2.zip",
-        "date": "2016-01-13 18:15:00",
+        "date": "2016-01-13T18:15:00+10:00",
         "notes": [
             "[Fixed] Fixed issue with plugin release feed url."
         ]
@@ -18,7 +18,7 @@
     {
         "version": "0.2.1",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.1.zip",
-        "date": "2015-11-21 13:00:00",
+        "date": "2015-11-21T13:00:00+10:00",
         "notes": [
             "[Improved] Removed plugin description (doesn't look great)."
         ]
@@ -26,7 +26,7 @@
     {
         "version": "0.2.0",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.0.zip",
-        "date": "2015-11-21 12:00:00",
+        "date": "2015-11-21T12:00:00+10:00",
         "notes": [
             "[Improved] Craft 2.5 compatibility, including plugin feed.",
             "[Improved] Cleanup/organise code."
@@ -35,7 +35,7 @@
     {
         "version": "0.1.0",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.1.0.zip",
-        "date": "2015-06-07 12:00:00",
+        "date": "2015-06-07T12:00:00+10:00",
         "notes": [
             "Initial commit"
         ]
