@@ -27,6 +27,9 @@ class ExpandedSinglesService extends BaseApplicationComponent
         // Grab all the Singles
         $singleSections = craft()->sections->getSectionsByType(SectionType::Single);
 
+        // Get logged-in user
+        $user = craft()->userSession->getUser();
+
         // Create list of Singles
         foreach ($singleSections as $single) {
             $criteria = craft()->elements->getCriteria(ElementType::Entry);
@@ -34,7 +37,7 @@ class ExpandedSinglesService extends BaseApplicationComponent
             $criteria->sectionId = $single->id;
             $entry = $criteria->first();
 
-            if ($entry) {
+            if ($entry && $user->can('editEntries:'.$single->id)) {
                 $url = $entry->getCpEditUrl();
 
                 $singles['single:'.$single->id] = array(
