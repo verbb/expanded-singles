@@ -14,7 +14,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '0.2.3';
+        return '0.2.4';
     }
 
     public function getSchemaVersion()

@@ -1,5 +1,13 @@
 [
     {
+        "version": "0.2.4",
+        "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.4.zip",
+        "date": "2017-01-24T00:00:00+10:00",
+        "notes": [
+            "[Improved] Adding check to see if user can edit a particular single before adding that single to the list for display. Thanks to [@aberkie](https://github.com/aberkie)."
+        ]
+    },
+    {
         "version": "0.2.3",
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.3.zip",
         "date": "2016-02-21T13:30:00+10:00",
