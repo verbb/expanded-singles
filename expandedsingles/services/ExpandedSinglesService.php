@@ -33,6 +33,7 @@ class ExpandedSinglesService extends BaseApplicationComponent
         // Create list of Singles
         foreach ($singleSections as $single) {
             $criteria = craft()->elements->getCriteria(ElementType::Entry);
+            $criteria->locale = craft()->i18n->getPrimarySiteLocale()->id;
             $criteria->status = null;
             $criteria->sectionId = $single->id;
             $entry = $criteria->first();
