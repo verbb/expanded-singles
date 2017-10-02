@@ -48,14 +48,11 @@ class ExpandedSinglesService extends BaseApplicationComponent
             }
         }
 
-        // Insert it right after 'All Entries'
-        if ($context == 'index') {
-            // array_splice() doesn't preserve the array keys, which is a must!
-            $this->_array_splice_preserve_keys($sources, 1, 0, $singles);
-        
-            // Remove original Singles links
-            unset($sources['singles']);
-        }
+        // array_splice() doesn't preserve the array keys, which is a must!
+        $this->_array_splice_preserve_keys($sources, 1, 0, $singles);
+    
+        // Remove original Singles links
+        unset($sources['singles']);
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if ($this->getSettings()->redirectToEntry) {
