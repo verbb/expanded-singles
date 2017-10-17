@@ -14,7 +14,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '0.2.4';
+        return '0.2.5';
     }
 
     public function getSchemaVersion()
@@ -24,17 +24,17 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getDeveloper()
     {
-        return 'S. Group';
+        return 'Verbb';
     }
 
     public function getDeveloperUrl()
     {
-        return 'http://sgroup.com.au';
+        return 'https://verbb.io';
     }
 
     public function getPluginUrl()
     {
-        return 'https://github.com/engram-design/ExpandedSingles';
+        return 'https://github.com/verbb/expanded-singles';
     }
 
     public function getDocumentationUrl()
@@ -44,7 +44,7 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/engram-design/ExpandedSingles/master/changelog.json';
+        return 'https://raw.githubusercontent.com/verbb/expanded-singles/master/changelog.json';
     }
 
     public function getSettingsHtml()
