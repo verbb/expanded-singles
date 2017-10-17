@@ -2,7 +2,7 @@
 > ### Expanded Singles has a new home with the fine folks at Verbb. Read about it in our [blog post](https://verbb.io/blog/welcome-to-verbb).
 >
 
-# Expanded Singles Plugin for Craft CMS
+# Expanded Singles Plugin for Craft CMS 3
 
 <img width="500" src="https://verbb.io/uploads/plugins/expanded-singles/_800x455_crop_center-center/expanded-singles-social-card.png">
 
