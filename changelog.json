@@ -4,7 +4,10 @@
         "downloadUrl": "https://github.com/engram-design/ExpandedSingles/archive/0.2.5.zip",
         "date": "2017-10-18T00:00:00+10:00",
         "notes": [
-            "[Added] Verbb marketing (new plugin icon, readme, etc)."
+            "[Added] Verbb marketing (new plugin icon, readme, etc).",
+            "[Improved] Improve link hijacking.",
+            "[Improved] Allow functionality on element modal.",
+            "[Fixed] Fix to work with multi-locales."
         ]
     },
     {
