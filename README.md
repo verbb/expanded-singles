@@ -8,6 +8,21 @@
 
 A simple plugin for Craft CMS that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.
 
+## Download
+
+While Craft 3 is still in beta, you'll need to use Composer to download and install the plugin.
+
+1. Open your terminal and go to your Craft project:
+
+        cd /path/to/project
+
+2. Then tell Composer to load the plugin:
+
+        composer require verbb/expanded-singles
+
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Expanded Singles.
+
+
 ## Documentation
 
 Visit the [Expanded Singles Plugin page](https://verbb.io/craft-plugins/expanded-singles) for all documentation, guides, pricing and developer resources.
