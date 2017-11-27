@@ -59,9 +59,9 @@ class ExpandedSingles extends Plugin
     // =========================================================================
 
     /**
-     * @return \craft\base\Model|null
+     * @return Settings
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Settings
     {
         return new Settings();
     }

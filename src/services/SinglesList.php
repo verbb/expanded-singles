@@ -56,7 +56,7 @@ class SinglesList extends Component
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if (ExpandedSingles::$plugin->getSettings()->redirectToEntry) {
             $js = '$(function() {' .
-                '$(".content.has-sidebar #sidebar nav a[data-url]").each(function(i, e) {' .
+                '$("#main-content #sidebar nav a[data-url]").each(function(i, e) {' .
                     'var link = "<a href=" + $(this).data("url") + ">" + $(this).text() + "</a>";' .
                         '$(this).replaceWith($(link));' .
                     '});' .
