@@ -69,7 +69,8 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function modifyEntrySources(&$sources, $context)
     {
-        if ($this->getSettings()->expandSingles) {
+        // Are we in the context of index?
+        if ($this->getSettings()->expandSingles && $context == 'index') {
 
             // Are there any Singles at all?
             if (array_key_exists('singles', $sources)) {
