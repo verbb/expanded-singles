@@ -28,9 +28,6 @@ class SinglesList extends Component
         // Grab all the Singles
         $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
 
-        // Get logged-in user
-        $user = Craft::$app->getUser();
-
         // Create list of Singles
         foreach ($singleSections as $single) {
             $entry = Entry::find()

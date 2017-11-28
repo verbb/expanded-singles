@@ -43,7 +43,9 @@ class ExpandedSingles extends Plugin
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
-            if ($this->getSettings()->expandSingles) {
+
+            // Are we in the context of index?
+            if ($this->getSettings()->expandSingles && $event->context == 'index') {
 
                 // Are there any Singles at all?
                 foreach ($event->sources as $source) {
