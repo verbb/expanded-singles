@@ -39,12 +39,12 @@ class ExpandedSinglesPlugin extends BasePlugin
 
     public function getDocumentationUrl()
     {
-        return $this->getPluginUrl() . '/blob/master/README.md';
+        return 'https://verbb.io/craft-plugins/expanded-singles/docs';
     }
 
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/verbb/expanded-singles/master/changelog.json';
+        return 'https://raw.githubusercontent.com/verbb/expanded-singles/craft-2/changelog.json';
     }
 
     public function getSettingsHtml()
