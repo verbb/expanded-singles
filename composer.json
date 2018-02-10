@@ -46,7 +46,7 @@
         "hasCpSettings": true,
         "hasCpSection": false,
         "documentationUrl": "https://github.com/verbb/expanded-singles",
-        "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/master/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-3/CHANGELOG.md",
         "class": "verbb\\expandedsingles\\ExpandedSingles"
     }
 }
