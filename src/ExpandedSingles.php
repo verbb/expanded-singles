@@ -10,6 +10,9 @@ use craft\base\Element;
 use craft\elements\Entry;
 use craft\events\RegisterElementSourcesEvent;
 
+use craft\redactor\events\RegisterLinkOptionsEvent;
+use craft\redactor\Field as RedactorField;
+
 use yii\base\Event;
 
 /**
@@ -43,14 +46,36 @@ class ExpandedSingles extends Plugin
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
-
-            // Are we in the context of index?
+            
+            // Have we enabled the plugin?
             if ($this->getSettings()->expandSingles) {
 
                 // Are there any Singles at all?
                 foreach ($event->sources as $source) {
                     if (array_key_exists('key', $source) && $source['key'] === 'singles') {
                         $this->singlesList->createSinglesList($event);
+                    }
+                }
+            }
+        });
+
+        // Hook onto a special hook from Redactor - it handles singles a little differently!
+        Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
+            
+            // Have we enabled the plugin?
+            if ($this->getSettings()->expandSingles) {
+
+                foreach ($event->linkOptions as $i => $linkOption) {
+
+                    // Only apply this for entries, and if there are any singles
+                    if ($linkOption['refHandle'] === 'entry') {
+                        if (in_array('singles', $linkOption['sources'])) {
+                            $modifiedSources = $this->singlesList->createSectionedSinglesList($linkOption['sources']);
+
+                            if ($modifiedSources) {
+                                $event->linkOptions[$i]['sources'] = $modifiedSources;
+                            }
+                        }
                     }
                 }
             }
