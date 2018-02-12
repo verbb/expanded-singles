@@ -45,7 +45,7 @@ class ExpandedSingles extends Plugin
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
 
             // Are we in the context of index?
-            if ($this->getSettings()->expandSingles && $event->context == 'index') {
+            if ($this->getSettings()->expandSingles) {
 
                 // Are there any Singles at all?
                 foreach ($event->sources as $source) {
