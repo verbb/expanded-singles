@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.2 - 2018-02-12
+
+### Added
+- Added support for Redactor fields
+
+### Fixed
+- Update Craft CMS requirements
+- Fix error when selecting an expanded single from a modal window
+
 ## 1.0.1 - 2017-12-07
 
 ### Changed
