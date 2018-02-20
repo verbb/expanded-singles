@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 - 2018-02-20
+
+### Fixed
+- Fix error when the Redactor plugin isn’t installed
+
 ## 1.0.2 - 2018-02-12
 
 ### Added
