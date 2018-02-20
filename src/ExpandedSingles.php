@@ -60,26 +60,28 @@ class ExpandedSingles extends Plugin
         });
 
         // Hook onto a special hook from Redactor - it handles singles a little differently!
-        Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
-            
-            // Have we enabled the plugin?
-            if ($this->getSettings()->expandSingles) {
+        if (class_exists(RedactorField::class)) {
+            Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
+                
+                // Have we enabled the plugin?
+                if ($this->getSettings()->expandSingles) {
 
-                foreach ($event->linkOptions as $i => $linkOption) {
+                    foreach ($event->linkOptions as $i => $linkOption) {
 
-                    // Only apply this for entries, and if there are any singles
-                    if ($linkOption['refHandle'] === 'entry') {
-                        if (in_array('singles', $linkOption['sources'])) {
-                            $modifiedSources = $this->singlesList->createSectionedSinglesList($linkOption['sources']);
+                        // Only apply this for entries, and if there are any singles
+                        if ($linkOption['refHandle'] === 'entry') {
+                            if (in_array('singles', $linkOption['sources'])) {
+                                $modifiedSources = $this->singlesList->createSectionedSinglesList($linkOption['sources']);
 
-                            if ($modifiedSources) {
-                                $event->linkOptions[$i]['sources'] = $modifiedSources;
+                                if ($modifiedSources) {
+                                    $event->linkOptions[$i]['sources'] = $modifiedSources;
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 
     // Protected Methods
