@@ -78,6 +78,7 @@ class SinglesList extends Component
         $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
 
         // Create list of Singles
+        $singles = [];
         foreach ($singleSections as $single) {
             $entry = Entry::find()
                 ->status(null)
