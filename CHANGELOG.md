@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4 - 2018-07-04
+
+### Fixed
+- Fix error caused by permissions to view singles
+
 ## 1.0.3 - 2018-02-20
 
 ### Fixed
