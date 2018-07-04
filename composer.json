@@ -2,7 +2,7 @@
     "name": "verbb/expanded-singles",
     "description": "A simple plugin for Craft CMS that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
     "type": "craft-plugin",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "keywords": [
         "craft",
         "cms",
