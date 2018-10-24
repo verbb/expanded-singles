@@ -30,19 +30,45 @@ class SinglesList extends Component
 
         // Create list of Singles
         foreach ($singleSections as $single) {
-            $entry = Entry::find()
-                ->status(null)
-                ->sectionId($single->id)
-                ->one();
+            $entry = null;
+            
+            // If this is a multi-site, we need to grab the first site-enabled entry
+            // Kind of annoying we can't query multiple site ids, or _all_ sites
+            // https://github.com/craftcms/cms/issues/2854
+            if (Craft::$app->getIsMultiSite()) {
+                foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
+                    $entry = Entry::find()
+                        ->siteId($siteId)
+                        ->status(null)
+                        ->sectionId($single->id)
+                        ->one();
+
+                    if ($entry) {
+                        break;
+                    }
+                }
+            } else {
+                $entry = Entry::find()
+                    ->status(null)
+                    ->sectionId($single->id)
+                    ->one();
+            }
 
             if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->id)) {
                 $url = $entry->getCpEditUrl();
 
                 $singles[] = [
-                    'key'      => 'single:' . $single->id,
-                    'label'    => $single->name,
-                    'data'     => ['url' => $url],
-                    'criteria' => ['section' => $single],
+                    'key' => 'single:' . $single->id,
+                    'label' => Craft::t('site', $single->name),
+                    'sites' => $single->getSiteIds(),
+                    'data' => [
+                        'url' => $url,
+                        'handle' => $single->handle
+                    ],
+                    'criteria' => [
+                        'sectionId' => $single->id,
+                        'editable' => false,
+                    ]
                 ];
             }
         }
