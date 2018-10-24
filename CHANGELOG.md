@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.5 - 2018-10-24
+
+### Fixed
+- Better support multi-site enabled singles
+
 ## 1.0.4 - 2018-07-04
 
 ### Fixed
