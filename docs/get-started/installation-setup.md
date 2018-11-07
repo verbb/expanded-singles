@@ -2,7 +2,7 @@
 You can install Expanded Singles via the plugin store, or through Composer.
 
 ### Craft Plugin Store
-To install **Expanded Singles**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Expanded Singles`, and click the _Try_ button.
+To install **Expanded Singles**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Expanded Singles`, and click the _Install_ button.
 
 ### Composer
 You can also add the package to your project using Composer.
@@ -16,8 +16,3 @@ cd /path/to/project
 composer require verbb/expanded-singles
 ```
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Expanded Singles.
-
-## Licensing
-You can try Expanded Singles in a development environment for as long as you like. Once your site goes live, you are required to purchase a license for the plugin.
-
-For more information, see [Craft's Commercial Plugin Licensing](https://docs.craftcms.com/v3/plugins.html#commercial-plugin-licensing).
