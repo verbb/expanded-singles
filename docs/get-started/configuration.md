@@ -4,9 +4,11 @@ There are two methods to managing plugin settings and configurations for Expande
 
 ## Configuration File
 
-Create an `expanded-singles.php` file under `config` with the following options available to you. You can also use multi-environment options to change these per environment.
+Create an `expanded-singles.php` file under your `/config` directory with the following options available to you. You can also use multi-environment options to change these per environment.
 
 ```php
+<?php
+
 return [
     'expandSingles' => true,
     'redirectToEntry' => false,
