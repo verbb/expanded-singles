@@ -1,26 +1,18 @@
 # Installation & Setup
+You can install Expanded Singles via the plugin store, or through Composer.
 
-While Craft 3 is in beta, you'll need to install plugins with [Composer](https://github.com/craftcms/docs/blob/master/en/installation.md). If you've installed Craft 3, you should already know a bit about Composer.
+### Craft Plugin Store
+To install **Expanded Singles**, navigate to the _Plugin Store_ section of your Craft control panel, search for `Expanded Singles`, and click the _Install_ button.
 
-To install Expanded Singles, follow the below instructions.
+### Composer
+You can also add the package to your project using Composer.
 
-## Installation
-
-1.  Open your terminal and go to your Craft project:
-
+1. Open your terminal and go to your Craft project:
 ```
 cd /path/to/project
-```        
-
-2.  Then tell Composer to load the plugin:
-
-```    
+```
+2. Then tell Composer to load the plugin:
+```
 composer require verbb/expanded-singles
-```        
-
-3.  In the Control Panel, go to Settings → Plugins and click the “Install” button for Expanded Singles.
-
-
-## Setup
-
-To edit settings, go to Settings → Expanded Singles.
+```
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Expanded Singles.
