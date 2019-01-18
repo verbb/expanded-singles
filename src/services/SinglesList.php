@@ -54,11 +54,11 @@ class SinglesList extends Component
                     ->one();
             }
 
-            if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->id)) {
+            if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
                 $url = $entry->getCpEditUrl();
 
                 $singles[] = [
-                    'key' => 'single:' . $single->id,
+                    'key' => 'single:' . $single->uid,
                     'label' => Craft::t('site', $single->name),
                     'sites' => $single->getSiteIds(),
                     'data' => [
@@ -111,10 +111,10 @@ class SinglesList extends Component
                 ->sectionId($single->id)
                 ->one();
 
-            if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->id)) {
+            if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
                 $url = $entry->getCpEditUrl();
 
-                $singles[] = 'single:' . $single->id;
+                $singles[] = 'single:' . $single->uid;
             }
         }
 
