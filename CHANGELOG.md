@@ -4,6 +4,7 @@
 
 ### Fixed
 - Fixed non-admins not seeing expanded singles due to Craft 3.1 changes in permission filtering from id's to uid's.
+- Now requires Craft 3.1+.
 
 ## 1.0.5 - 2018-10-24
 
