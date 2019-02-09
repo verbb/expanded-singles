@@ -87,6 +87,25 @@ class SinglesList extends Component
 
             Craft::$app->view->registerJs($js);
         }
+
+        // Update our element indexes to use the same columns as the original singles items
+        // $newSettings = [];
+        // $settings = Craft::$app->getElementIndexes()->getSettings(Entry::class);
+
+        // // Get the singles index info - if none exists, then no need to go further
+        // $singlesSettings = $settings['sources']['singles'] ?? null;
+
+        // if (!$singlesSettings) {
+        //     return;
+        // }
+
+        // foreach ($singles as $key => $single) {
+        //     if (isset($single['key'])) {
+        //         $newSettings[$single['key']] = $singlesSettings;
+        //     }
+        // }
+
+        // Craft::$app->getElementIndexes()->saveSettings(Entry::class, $newSettings);
     }
 
     /**
