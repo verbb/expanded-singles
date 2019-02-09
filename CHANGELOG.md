@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.7 - 2019-02-09
+
+### Fixed
+- Fix JS showing for non-CP requests.
+
 ## 1.0.6 - 2019-01-18
 
 ### Fixed
