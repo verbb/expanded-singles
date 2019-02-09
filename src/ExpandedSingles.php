@@ -39,6 +39,10 @@ class ExpandedSingles extends Plugin
 
         self::$plugin = $this;
 
+        if (!Craft::$app->getRequest()->getIsCpRequest()) {
+            return;
+        }
+
         // Register Components (Services)
         $this->setComponents([
             'singlesList' => SinglesList::class,
