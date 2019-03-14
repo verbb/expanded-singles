@@ -1,19 +1,22 @@
-{% import "_includes/forms" as forms %}
+{% import '_includes/forms' as forms %}
+{% import 'expanded-singles/_macros' as macros %}
 
 {{ forms.lightswitchField({
     id: 'expandSingles',
     name: 'expandSingles',
-    label: 'Expand Singles' | t,
+    label: 'Expand Singles' | t('expanded-singles'),
     on: settings.expandSingles,
-    instructions: 'Expands the Singles link on the Entries page to list them like Channels and Structures.' | t
+    instructions: 'Expands the Singles link on the Entries page to list them like Channels and Structures.' | t('expanded-singles'),
+    warning: macros.configWarning('expandSingles', 'expanded-singles'),
 }) }}
 
 {{ forms.lightswitchField({
     id: 'redirectToEntry',
     name: 'redirectToEntry',
-    label: 'Redirect to Entry' | t,
+    label: 'Redirect to Entry' | t('expanded-singles'),
     on: settings.redirectToEntry,
-    instructions: 'Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.' | t
+    instructions: 'Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.' | t('expanded-singles'),
+    warning: macros.configWarning('redirectToEntry', 'expanded-singles'),
 }) }}
 
 <hr />
