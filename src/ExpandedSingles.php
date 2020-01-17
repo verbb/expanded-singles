@@ -1,7 +1,7 @@
 <?php
 namespace verbb\expandedsingles;
 
-use verbb\expandedsingles\services\SinglesList;
+use verbb\expandedsingles\base\PluginTrait;
 use verbb\expandedsingles\models\Settings;
 
 use Craft;
@@ -9,26 +9,29 @@ use craft\base\Plugin;
 use craft\base\Element;
 use craft\elements\Entry;
 use craft\events\RegisterElementSourcesEvent;
+use craft\events\RegisterUrlRulesEvent;
+use craft\helpers\UrlHelper;
+use craft\web\UrlManager;
 
 use craft\redactor\events\RegisterLinkOptionsEvent;
 use craft\redactor\Field as RedactorField;
 
 use yii\base\Event;
 
-/**
- * @property  SinglesList $singlesList
- * @property  Settings    $settings
- * @method    Settings getSettings()
- */
 class ExpandedSingles extends Plugin
 {
-    // Static Properties
+    // Public Properties
     // =========================================================================
 
-    /**
-     * @var ExpandedSingles
-     */
-    public static $plugin;
+    public $schemaVersion = '1.0.0';
+    public $hasCpSettings = true;
+
+
+    // Traits
+    // =========================================================================
+
+    use PluginTrait;
+
 
     // Public Methods
     // =========================================================================
@@ -39,14 +42,13 @@ class ExpandedSingles extends Plugin
 
         self::$plugin = $this;
 
+        $this->_setPluginComponents();
+        $this->_setLogging();
+        $this->_registerCpRoutes();
+
         if (!Craft::$app->getRequest()->getIsCpRequest()) {
             return;
         }
-
-        // Register Components (Services)
-        $this->setComponents([
-            'singlesList' => SinglesList::class,
-        ]);
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
@@ -88,24 +90,30 @@ class ExpandedSingles extends Plugin
         }
     }
 
+    public function getSettingsResponse()
+    {
+        Craft::$app->getResponse()->redirect(UrlHelper::cpUrl('expanded-singles/settings'));
+    }
+
+
     // Protected Methods
     // =========================================================================
 
-    /**
-     * @return Settings
-     */
     protected function createSettingsModel(): Settings
     {
         return new Settings();
     }
 
-    /**
-     * @return string The rendered settings HTML
-     */
-    protected function settingsHtml(): string
+
+    // Private Methods
+    // =========================================================================
+
+    private function _registerCpRoutes()
     {
-        return Craft::$app->view->renderTemplate('expanded-singles/settings', [
-            'settings' => $this->getSettings(),
-        ]);
+        Event::on(UrlManager::class, UrlManager::EVENT_REGISTER_CP_URL_RULES, function(RegisterUrlRulesEvent $event) {
+            $event->rules = array_merge($event->rules, [
+                'expanded-singles/settings' => 'expanded-singles/default/settings',
+            ]);
+        });
     }
 }

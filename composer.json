@@ -25,7 +25,8 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.1.0"
+        "craftcms/cms": "^3.4.0-RC1",
+        "verbb/base": "^1.0.0"
     },
     "repositories": [
         {
@@ -42,9 +43,6 @@
         "name": "Expanded Singles",
         "handle": "expanded-singles",
         "description": "Alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
-        "schemaVersion": "1.0.0",
-        "hasCpSettings": true,
-        "hasCpSection": false,
         "documentationUrl": "https://github.com/verbb/expanded-singles",
         "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-3/CHANGELOG.md",
         "class": "verbb\\expandedsingles\\ExpandedSingles"

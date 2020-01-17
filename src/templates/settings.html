@@ -1,7 +1,24 @@
+{% extends 'expanded-singles/_layouts' %}
 {% import '_includes/forms' as forms %}
-{% import 'expanded-singles/_macros' as macros %}
+{% import 'verbb-base/_macros' as macros %}
+
+{% set crumbs = [
+    { label: 'Expanded Singles' | t('expanded-singles'), url: url('expanded-singles/settings') },
+    { label: 'Settings' | t('app'), url: url('expanded-singles/settings') }
+] %}
+
+{% set selectedTab = 'settings' %}
+{% set fullPageForm = true %}
+
+{% block blockContent %}
+
+<input type="hidden" name="action" value="plugins/save-plugin-settings">
+<input type="hidden" name="pluginHandle" value="expanded-singles">
+
+{% namespace 'settings' %}
 
 {{ forms.lightswitchField({
+    first: true,
     id: 'expandSingles',
     name: 'expandSingles',
     label: 'Expand Singles' | t('expanded-singles'),
@@ -19,4 +36,6 @@
     warning: macros.configWarning('redirectToEntry', 'expanded-singles'),
 }) }}
 
-<hr />
+{% endnamespace %}
+
+{% endblock %}
