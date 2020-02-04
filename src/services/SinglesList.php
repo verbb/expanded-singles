@@ -6,6 +6,7 @@ use verbb\expandedsingles\ExpandedSingles;
 use Craft;
 use craft\base\Component;
 use craft\elements\Entry;
+use craft\helpers\ArrayHelper;
 use craft\models\Section;
 use craft\events\RegisterElementSourcesEvent;
 
@@ -57,13 +58,16 @@ class SinglesList extends Component
             if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
                 $url = $entry->getCpEditUrl();
 
+                $siteIds = ArrayHelper::getColumn($entry->getSupportedSites(), 'siteId');
+
                 $singles[] = [
                     'key' => 'single:' . $single->uid,
                     'label' => Craft::t('site', $single->name),
                     'sites' => $single->getSiteIds(),
                     'data' => [
                         'url' => $url,
-                        'handle' => $single->handle
+                        'handle' => $single->handle,
+                        'sites' => implode(',', $siteIds),
                     ],
                     'criteria' => [
                         'sectionId' => $single->id,
