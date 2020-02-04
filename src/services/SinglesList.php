@@ -82,34 +82,26 @@ class SinglesList extends Component
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if (ExpandedSingles::$plugin->getSettings()->redirectToEntry) {
+            $css = '.cp-nav-link-mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+            };';
+
+            Craft::$app->view->registerCss($css);
+
             $js = '$(function() {' .
                 '$("#main-content #sidebar nav a[data-url]").each(function(i, e) {' .
-                    'var link = "<a href=" + $(this).data("url") + ">" + $(this).text() + "</a>";' .
-                        '$(this).replaceWith($(link));' .
-                    '});' .
-                '});';
+                    'var $link = $("<a class=\"cp-nav-link-mask\" href=" + $(this).data("url") + ">" + $(this).text() + "</a>");' .
+                    
+                    '$(this).parent().append($link);'.
+                '});' .
+            '});';
 
             Craft::$app->view->registerJs($js);
         }
-
-        // Update our element indexes to use the same columns as the original singles items
-        // $newSettings = [];
-        // $settings = Craft::$app->getElementIndexes()->getSettings(Entry::class);
-
-        // // Get the singles index info - if none exists, then no need to go further
-        // $singlesSettings = $settings['sources']['singles'] ?? null;
-
-        // if (!$singlesSettings) {
-        //     return;
-        // }
-
-        // foreach ($singles as $key => $single) {
-        //     if (isset($single['key'])) {
-        //         $newSettings[$single['key']] = $singlesSettings;
-        //     }
-        // }
-
-        // Craft::$app->getElementIndexes()->saveSettings(Entry::class, $newSettings);
     }
 
     /**
