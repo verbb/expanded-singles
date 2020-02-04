@@ -119,21 +119,19 @@ class SinglesList extends Component
      */
     public function createSectionedSinglesList(array $sources)
     {
-        // Grab all the Singles
-        $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
+        $sections = Craft::$app->getSections()->getAllSections();
 
-        // Create list of Singles
-        $singles = [];
-        foreach ($singleSections as $single) {
-            $entry = Entry::find()
-                ->status(null)
-                ->sectionId($single->id)
-                ->one();
+        $sites = Craft::$app->getSites()->getAllSites();
 
-            if ($entry && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
-                $url = $entry->getCpEditUrl();
-
-                $singles[] = 'single:' . $single->uid;
+        foreach ($sections as $section) {
+            if ($section->type === Section::TYPE_SINGLE) {
+                $sectionSiteSettings = $section->getSiteSettings();
+                
+                foreach ($sites as $site) {
+                    if (isset($sectionSiteSettings[$site->id]) && $sectionSiteSettings[$site->id]->hasUrls) {
+                        $singles[] = 'single:' . $section->uid;
+                    }
+                }
             }
         }
 
