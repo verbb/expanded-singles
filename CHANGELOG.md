@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.8 - 2020-02-05
+
+### Added
+- Add override notice for settings fields.
+
+### Changed
+- Change behaviour of “Redirect to Entry”, now using an overlay to retain normal element index filtering.
+
+### Fixed
+- Fix redactor singles not being site-aware.
+- Be sure to include siteIds in single data for filtering.
+- Ensure site filtering works with “Redirect to Entry” set.
+
 ## 1.0.7 - 2019-02-09
 
 ### Fixed
