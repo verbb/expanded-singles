@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.9 - 2020-02-11
+
+### Changed
+- Ensure URL to single redirect is correct on multisite. (thanks @andersaloof)
+
 ## 1.0.8 - 2020-02-05
 
 ### Added
