@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.10 - 2020-02-28
+
+### Changed
+- Refactor and cleanup JS/CSS.
+- Add some debug statements.
+
+### Fixed
+- Fix PHP error.
+- Fix minor styling caused by new overlay.
+
 ## 1.0.9 - 2020-02-11
 
 ### Changed
