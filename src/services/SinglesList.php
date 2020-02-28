@@ -56,6 +56,8 @@ class SinglesList extends Component
                     ->one();
             }
 
+            $singles = [];
+
             if (($entry || $siteUrls) && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
                 $url = $entry && !$siteUrls ? $entry->getCpEditUrl() : '';
 
