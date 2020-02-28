@@ -2,6 +2,7 @@
 namespace verbb\expandedsingles\services;
 
 use verbb\expandedsingles\ExpandedSingles;
+use verbb\expandedsingles\assetbundles\ExpandedSinglesAsset;
 
 use Craft;
 use craft\base\Component;
@@ -86,59 +87,7 @@ class SinglesList extends Component
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if (ExpandedSingles::$plugin->getSettings()->redirectToEntry) {
-            $css = '.cp-nav-link-mask {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                z-index: 10;
-            };';
-
-            Craft::$app->view->registerCss($css);
-
-            $js = <<<'JS'
-$(function() {
-    var $siteMenuBtn = $('#page-container').find('.sitemenubtn:first');
-    var storedSiteId = Craft.getLocalStorage('BaseElementIndex.siteId');
-
-    var updateSingleUrls = function(siteId = null) {
-        $("#main-content #sidebar nav a[data-url]").each(function(i, e) {
-            var url = siteId != null && $(this).data("siteurls")[siteId] ? $(this).data("siteurls")[siteId] : $(this).data("url");
-
-            if (!url) return;
-
-            // Update if overlay link already exists, create and append if not
-            var $link = $(this).parent().find('a.cp-nav-link-mask');
-            if ($link.length) {
-                $link.attr('href', url);
-            } else {
-                $link = $("<a class=\"cp-nav-link-mask\" href=" + url + ">" + $(this).text() + "</a>");
-                $(this).parent().append($link);
-            }
-        });
-    }
-
-    var onSelect = function(ev) {
-        var $option = $(ev.selectedOption);
-        updateSingleUrls($option.data('site-id'));
-    }
-
-    // If we have a site menu
-    if ($siteMenuBtn.length) {
-        // Set links to stored siteId
-        updateSingleUrls(storedSiteId);
-
-        // Add listener when selecting site
-        this.siteMenu = $siteMenuBtn.menubtn().data('menubtn').menu;
-        this.siteMenu.on('optionselect', onSelect);
-    } else {
-        // Set links to default link
-        updateSingleUrls();
-    }
-});
-JS;
-
-            Craft::$app->view->registerJs($js);
+            Craft::$app->getView()->registerAssetBundle(ExpandedSinglesAsset::class);
         }
     }
 
