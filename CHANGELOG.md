@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11 - 2020-02-28
+
+### Fixed
+- Fix PHP error (again).
+- Even more refactoring and cleanup JS/CSS.
+
 ## 1.0.10 - 2020-02-28
 
 ### Changed
