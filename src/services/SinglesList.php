@@ -32,47 +32,29 @@ class SinglesList extends Component
 
         // Create list of Singles
         foreach ($singleSections as $single) {
-            $entry = null;
             $siteUrls = [];
             
-            // If this is a multi-site, we need to grab the first site-enabled entry
-            // Kind of annoying we can't query multiple site ids, or _all_ sites
-            // https://github.com/craftcms/cms/issues/2854
-            if (Craft::$app->getIsMultiSite()) {
-                foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
-                    $siteEntry = Entry::find()
-                        ->siteId($siteId)
-                        ->status(null)
-                        ->sectionId($single->id)
-                        ->one();
-
-                    if ($siteEntry) {
-                        $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
-                    }
-                }
-            } else {
-                $entry = Entry::find()
+            foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
+                $siteEntry = Entry::find()
+                    ->siteId($siteId)
                     ->status(null)
                     ->sectionId($single->id)
                     ->one();
+
+                if ($siteEntry) {
+                    $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
+                }
             }
 
-            $singles = [];
-
-            if (($entry || $siteUrls) && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
-                $url = $entry && !$siteUrls ? $entry->getCpEditUrl() : '';
-
-                $siteIds = $entry ? ArrayHelper::getColumn($entry->getSupportedSites(), 'siteId') : array_keys($siteUrls);;
-
+            if ($siteUrls && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
                 $singles[] = [
                     'key' => 'single:' . $single->uid,
                     'label' => Craft::t('site', $single->name),
-                    'sites' => $single->getSiteIds(),
                     'data' => [
-                        'url' => $url,
+                        'cp-nav' => true,
                         'handle' => $single->handle,
-                        'sites' => implode(',', $siteIds),
-                        'siteUrls' => json_encode($siteUrls),
+                        'sites' => implode(',', $single->getSiteIds()),
+                        'site-urls' => json_encode($siteUrls),
                     ],
                     'criteria' => [
                         'sectionId' => $single->id,

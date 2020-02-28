@@ -10,15 +10,16 @@
     var $siteMenuBtn = $('#page-container').find('.sitemenubtn:first');
     var storedSiteId = Craft.getLocalStorage('BaseElementIndex.siteId');
 
+    if (!storedSiteId) {
+        storedSiteId = Craft.primarySiteId;
+    }
+
     var updateSingleUrls = function(siteId = null) {
-        $('#main-content #sidebar nav a[data-url]').each(function(i, e) {
-            var url = '';
+        $('#main-content #sidebar nav a[data-cp-nav]').each(function(i, e) {
+            var siteUrls = $(this).data('site-urls');
+            var url = siteUrls[siteId];
 
-            if (siteId != null) {
-                url = $(this).data('siteurls')[siteId] ? $(this).data('siteurls')[siteId] : $(this).data('url');
-            }
-
-            console.log('Expanded Singles: ' + url);
+            console.log('Expanded Singles: ' + siteId + ': ' + url);
 
             if (!url) {
                 return;
@@ -52,7 +53,7 @@
             });
         } else {
             // Set links to default link
-            updateSingleUrls();
+            updateSingleUrls(storedSiteId);
         }
     }, this));
 
