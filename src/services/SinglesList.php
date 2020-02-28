@@ -106,6 +106,8 @@ class SinglesList extends Component
 
         $sites = Craft::$app->getSites()->getAllSites();
 
+        $singles = [];
+
         foreach ($sections as $section) {
             if ($section->type === Section::TYPE_SINGLE) {
                 $sectionSiteSettings = $section->getSiteSettings();
