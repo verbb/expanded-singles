@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.12 - 2020-04-01
+
+### Changed
+- Fix CP styling for expanded singles items.
+
 ## 1.0.11 - 2020-02-28
 
 ### Fixed
