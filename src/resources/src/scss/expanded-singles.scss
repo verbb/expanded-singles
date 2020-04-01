@@ -11,5 +11,9 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background-color: #e4edf6;
-};
+    background-color: #fbfcfd;
+
+    &:hover {
+        background-color: #f0f2f3 !important;
+    }
+}
