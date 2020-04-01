@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0 - 2020-04-01
+
+### Changed
+- Now requires Craft 3.4+.
+
 ## 1.0.11 - 2020-02-28
 
 ### Fixed
