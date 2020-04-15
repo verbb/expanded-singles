@@ -52,10 +52,7 @@ trait PluginTrait
 
     private function _setLogging()
     {
-        Craft::getLogger()->dispatcher->targets[] = new FileTarget([
-            'logFile' => Craft::getAlias('@storage/logs/expanded-singles.log'),
-            'categories' => ['expanded-singles'],
-        ]);
+        BaseHelper::setFileLogging('expanded-singles');
     }
 
 }
