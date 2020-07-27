@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3 - 2020-07-27
+
+### Fixed
+- Fix duplicate sidebar entry with "Redirect to Entry" set to true.
+
 ## 1.1.2 - 2020-04-16
 
 ### Fixed
