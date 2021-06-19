@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.4 - 2021-06-20
+
+### Changed
+- Improve performance of generating singles list when called multiple times.
+
 ## 1.1.3 - 2020-07-27
 
 ### Fixed
