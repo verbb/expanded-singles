@@ -13,6 +13,12 @@ use craft\events\RegisterElementSourcesEvent;
 
 class SinglesList extends Component
 {
+    // Properties
+    // =========================================================================
+
+    private $singles = [];
+
+
     // Public Methods
     // =========================================================================
 
@@ -25,47 +31,51 @@ class SinglesList extends Component
      */
     public function createSinglesList(RegisterElementSourcesEvent $event)
     {
-        $singles[] = ['heading' => Craft::t('app', 'Singles')];
+        if (!$this->singles) {
+            $singles[] = ['heading' => Craft::t('app', 'Singles')];
 
-        // Grab all the Singles
-        $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
+            // Grab all the Singles
+            $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
 
-        // Create list of Singles
-        foreach ($singleSections as $single) {
-            $siteUrls = [];
-            
-            foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
-                $siteEntry = Entry::find()
-                    ->siteId($siteId)
-                    ->status(null)
-                    ->sectionId($single->id)
-                    ->one();
+            // Create list of Singles
+            foreach ($singleSections as $single) {
+                $siteUrls = [];
+                
+                foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
+                    $siteEntry = Entry::find()
+                        ->siteId($siteId)
+                        ->status(null)
+                        ->sectionId($single->id)
+                        ->one();
 
-                if ($siteEntry) {
-                    $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
+                    if ($siteEntry) {
+                        $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
+                    }
+                }
+
+                if ($siteUrls && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
+                    $singles[] = [
+                        'key' => 'single:' . $single->uid,
+                        'label' => Craft::t('site', $single->name),
+                        'data' => [
+                            'cp-nav' => true,
+                            'handle' => $single->handle,
+                            'sites' => implode(',', $single->getSiteIds()),
+                            'site-urls' => json_encode($siteUrls),
+                        ],
+                        'criteria' => [
+                            'sectionId' => $single->id,
+                            'editable' => false,
+                        ]
+                    ];
                 }
             }
 
-            if ($siteUrls && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
-                $singles[] = [
-                    'key' => 'single:' . $single->uid,
-                    'label' => Craft::t('site', $single->name),
-                    'data' => [
-                        'cp-nav' => true,
-                        'handle' => $single->handle,
-                        'sites' => implode(',', $single->getSiteIds()),
-                        'site-urls' => json_encode($siteUrls),
-                    ],
-                    'criteria' => [
-                        'sectionId' => $single->id,
-                        'editable' => false,
-                    ]
-                ];
-            }
+            $this->singles = $singles;
         }
 
         // Replace original Singles link with new singles list
-        array_splice($event->sources, 1, 1, $singles);
+        array_splice($event->sources, 1, 1, $this->singles);
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if (ExpandedSingles::$plugin->getSettings()->redirectToEntry) {
