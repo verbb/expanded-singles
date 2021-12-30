@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.5 - 2021-12-31
+
+### Fixed
+- Fix redirect to entry option not working for multi-sites where users didn't have access to the primary site.
+
 ## 1.1.4 - 2021-06-20
 
 ### Changed
