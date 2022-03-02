@@ -8,11 +8,9 @@
 
 (function($) {
     var $siteMenuBtn = $('#page-container').find('.sitemenubtn:first');
-    var storedSiteId = Craft.getLocalStorage('BaseElementIndex.siteId');
 
-    if (!storedSiteId) {
-        storedSiteId = Craft.primarySiteId;
-    }
+    // Get the current site, as selected by the user, or stored in Cookie/LocalStorage
+    var storedSiteId = Craft.cp.getSiteId();
 
     var updateSingleUrls = function(siteId = null) {
         $('#main-content #sidebar nav a[data-cp-nav]').each(function(i, e) {
@@ -40,20 +38,35 @@
     Garnish.requestAnimationFrame($.proxy(function() {
         // If we have a site menu
         if ($siteMenuBtn.length) {
+            this.siteMenu = $siteMenuBtn.menubtn().data('menubtn').menu;
+
+            // If there's no Cookie/LocalStorage set for the site, fetch it from the DOM
+            if (!storedSiteId) {
+                // Get the selected menu item
+                $.each(this.siteMenu.$options, function(index, element) {
+                    var $option = $(element);
+
+                    if ($option.hasClass('sel')) {
+                        storedSiteId = $option.data('site-id');
+
+                        // While we're at it, set it to a Cookie
+                        Craft.cp.setSiteId(storedSiteId);
+                    }
+                });
+            }
+
             // Set links to stored siteId
             updateSingleUrls(storedSiteId);
 
             // Add listener when selecting site
-            this.siteMenu = $siteMenuBtn.menubtn().data('menubtn').menu;
-            
             this.siteMenu.on('optionselect', function(e) {
                 var $option = $(e.selectedOption);
 
                 updateSingleUrls($option.data('site-id'));
             });
         } else {
-            // Set links to default link
-            updateSingleUrls(storedSiteId);
+            // Set links to the primary site as default
+            updateSingleUrls(Craft.primarySiteId);
         }
     }, this));
 
