@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.6 - 2022-03-02
+
+### Fixed
+- Fix an error on Craft 3.4, introduced in 1.1.5.
+
 ## 1.1.5 - 2021-12-31
 
 ### Fixed
