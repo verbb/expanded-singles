@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 - 2022-03-02
+
+### Changed
+- Now requires Craft 3.5+.
+
+### Fixed
+- Fix redirect to entry option not working for multi-sites where users didn't have access to the primary site.
+
 ## 1.1.6 - 2022-03-02
 
 ### Fixed
