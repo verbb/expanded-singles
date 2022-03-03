@@ -8,6 +8,7 @@ use Craft;
 use craft\base\Component;
 use craft\elements\Entry;
 use craft\helpers\ArrayHelper;
+use craft\helpers\Json;
 use craft\models\Section;
 use craft\events\RegisterElementSourcesEvent;
 
@@ -59,7 +60,7 @@ class SinglesList extends Component
                             'cp-nav' => true,
                             'handle' => $single->handle,
                             'sites' => implode(',', $single->getSiteIds()),
-                            'site-urls' => json_encode($siteUrls),
+                            'site-urls' => Json::encode($siteUrls),
                         ],
                         'criteria' => [
                             'sectionId' => $single->id,
