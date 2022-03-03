@@ -1,5 +1,7 @@
 {% extends parentLayout ?? '_layouts/cp' %}
 
+{% do view.registerAssetBundle('verbb\\expandedsingles\\assetbundles\\ExpandedSinglesAsset') %}
+
 {% if title is not defined %}
     {% set title = 'Expanded Singles' | t('exapnded-singles') %}
 {% endif %}

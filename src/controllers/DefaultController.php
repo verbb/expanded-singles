@@ -6,12 +6,14 @@ use verbb\expandedsingles\ExpandedSingles;
 use Craft;
 use craft\web\Controller;
 
+use yii\web\Response;
+
 class DefaultController extends Controller
 {
     // Public Methods
     // =========================================================================
 
-    public function actionSettings()
+    public function actionSettings(): Response
     {
         $settings = ExpandedSingles::$plugin->getSettings();
 

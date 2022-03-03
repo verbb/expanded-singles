@@ -14,7 +14,7 @@ class Settings extends Model
      *
      * @var boolean
      */
-    public $expandSingles = true;
+    public bool $expandSingles = true;
 
     /**
      * Automatically redirects to edit the Single Entry when clicking on the
@@ -22,6 +22,6 @@ class Settings extends Model
      *
      * @var boolean
      */
-    public $redirectToEntry = false;
+    public bool $redirectToEntry = false;
 
 }

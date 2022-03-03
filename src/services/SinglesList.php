@@ -16,21 +16,19 @@ class SinglesList extends Component
     // Properties
     // =========================================================================
 
-    private $singles = [];
+    private array $singles = [];
 
 
     // Public Methods
     // =========================================================================
-
     /**
      * Create a new singles list and replace the old one with it
      *
-     * @param RegisterElementSourcesEvent $event
      *
-     * @return void
      */
-    public function createSinglesList(RegisterElementSourcesEvent $event)
+    public function createSinglesList(RegisterElementSourcesEvent $event): void
     {
+        $singles = [];
         if (!$this->singles) {
             $singles[] = ['heading' => Craft::t('app', 'Singles')];
 
@@ -41,7 +39,7 @@ class SinglesList extends Component
             foreach ($singleSections as $single) {
                 $siteUrls = [];
                 
-                foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
+                foreach (Craft::$app->getSites()->getAllSiteIds() as $siteId) {
                     $siteEntry = Entry::find()
                         ->siteId($siteId)
                         ->status(null)
@@ -88,11 +86,10 @@ class SinglesList extends Component
      * of `createSinglesList`, and is used for a Redactor field. This uses a simple array, and outputs an array of
      * section:id combinations. This is because Redactor shows entries grouped by channels.
      *
-     * @param array $sources
      *
-     * @return array
+     * @return mixed[]
      */
-    public function createSectionedSinglesList(array $sources)
+    public function createSectionedSinglesList(array $sources): array
     {
         $sections = Craft::$app->getSections()->getAllSections();
 
