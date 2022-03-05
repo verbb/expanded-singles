@@ -55,11 +55,10 @@ class ExpandedSingles extends Plugin
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
             // Have we enabled the plugin?
             if ($this->getSettings()->expandSingles) {
-
                 // Are there any Singles at all?
                 foreach ($event->sources as $source) {
                     if (array_key_exists('key', $source) && $source['key'] === 'singles') {
-                        $this->singlesList->createSinglesList($event);
+                        $this->getSinglesList()->createSinglesList($event);
                     }
                 }
             }
@@ -70,12 +69,10 @@ class ExpandedSingles extends Plugin
             Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
                 // Have we enabled the plugin?
                 if ($this->getSettings()->expandSingles) {
-
                     foreach ($event->linkOptions as $i => $linkOption) {
-
                         // Only apply this for entries, and if there are any singles
                         if ($linkOption['refHandle'] === 'entry' && in_array('singles', $linkOption['sources'])) {
-                            $modifiedSources = $this->singlesList->createSectionedSinglesList($linkOption['sources']);
+                            $modifiedSources = $this->getSinglesList()->createSectionedSinglesList($linkOption['sources']);
                             
                             if ($modifiedSources) {
                                 $event->linkOptions[$i]['sources'] = $modifiedSources;

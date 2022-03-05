@@ -3,7 +3,6 @@ namespace verbb\expandedsingles\controllers;
 
 use verbb\expandedsingles\ExpandedSingles;
 
-use Craft;
 use craft\web\Controller;
 
 use yii\web\Response;

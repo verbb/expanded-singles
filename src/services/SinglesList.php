@@ -7,7 +7,6 @@ use verbb\expandedsingles\assetbundles\ExpandedSinglesAsset;
 use Craft;
 use craft\base\Component;
 use craft\elements\Entry;
-use craft\helpers\ArrayHelper;
 use craft\helpers\Json;
 use craft\models\Section;
 use craft\events\RegisterElementSourcesEvent;
@@ -83,12 +82,12 @@ class SinglesList extends Component
     }
 
     /**
-     * Create a new singles list and replace the old one with it. This is a slightly modified and short-hand version
+     * Create a new singles list and replace the old one with it. This is a slightly modified and shorthand version
      * of `createSinglesList`, and is used for a Redactor field. This uses a simple array, and outputs an array of
      * section:id combinations. This is because Redactor shows entries grouped by channels.
      *
      *
-     * @return mixed[]
+     * @return array
      */
     public function createSectionedSinglesList(array $sources): array
     {
