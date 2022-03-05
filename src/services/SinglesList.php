@@ -21,11 +21,7 @@ class SinglesList extends Component
 
     // Public Methods
     // =========================================================================
-    /**
-     * Create a new singles list and replace the old one with it
-     *
-     *
-     */
+
     public function createSinglesList(RegisterElementSourcesEvent $event): void
     {
         $singles = [];
@@ -38,7 +34,7 @@ class SinglesList extends Component
             // Create list of Singles
             foreach ($singleSections as $single) {
                 $siteUrls = [];
-                
+
                 foreach (Craft::$app->getSites()->getAllSiteIds() as $siteId) {
                     $siteEntry = Entry::find()
                         ->siteId($siteId)
@@ -64,7 +60,7 @@ class SinglesList extends Component
                         'criteria' => [
                             'sectionId' => $single->id,
                             'editable' => false,
-                        ]
+                        ],
                     ];
                 }
             }
@@ -85,9 +81,6 @@ class SinglesList extends Component
      * Create a new singles list and replace the old one with it. This is a slightly modified and shorthand version
      * of `createSinglesList`, and is used for a Redactor field. This uses a simple array, and outputs an array of
      * section:id combinations. This is because Redactor shows entries grouped by channels.
-     *
-     *
-     * @return array
      */
     public function createSectionedSinglesList(array $sources): array
     {
@@ -100,7 +93,7 @@ class SinglesList extends Component
         foreach ($sections as $section) {
             if ($section->type === Section::TYPE_SINGLE) {
                 $sectionSiteSettings = $section->getSiteSettings();
-                
+
                 foreach ($sites as $site) {
                     if (isset($sectionSiteSettings[$site->id]) && $sectionSiteSettings[$site->id]->hasUrls) {
                         $singles[] = 'single:' . $section->uid;

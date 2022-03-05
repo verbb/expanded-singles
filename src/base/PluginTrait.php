@@ -18,13 +18,8 @@ trait PluginTrait
     public static ExpandedSingles $plugin;
 
 
-    // Public Methods
+    // Static Methods
     // =========================================================================
-
-    public function getSinglesList(): SinglesList
-    {
-        return $this->get('singlesList');
-    }
 
     public static function log($message): void
     {
@@ -34,6 +29,15 @@ trait PluginTrait
     public static function error($message): void
     {
         Craft::getLogger()->log($message, Logger::LEVEL_ERROR, 'expanded-singles');
+    }
+
+
+    // Public Methods
+    // =========================================================================
+
+    public function getSinglesList(): SinglesList
+    {
+        return $this->get('singlesList');
     }
 
 

@@ -24,8 +24,8 @@ class ExpandedSingles extends Plugin
     // Public Properties
     // =========================================================================
 
-    public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = true;
+    public string $schemaVersion = '1.0.0';
 
 
     // Traits
@@ -73,7 +73,7 @@ class ExpandedSingles extends Plugin
                         // Only apply this for entries, and if there are any singles
                         if ($linkOption['refHandle'] === 'entry' && in_array('singles', $linkOption['sources'])) {
                             $modifiedSources = $this->getSinglesList()->createSectionedSinglesList($linkOption['sources']);
-                            
+
                             if ($modifiedSources) {
                                 $event->linkOptions[$i]['sources'] = $modifiedSources;
                             }
