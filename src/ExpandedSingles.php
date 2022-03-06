@@ -21,7 +21,7 @@ use yii\base\Event;
 
 class ExpandedSingles extends Plugin
 {
-    // Public Properties
+    // Properties
     // =========================================================================
 
     public bool $hasCpSettings = true;
