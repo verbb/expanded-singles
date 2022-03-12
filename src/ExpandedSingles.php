@@ -53,8 +53,11 @@ class ExpandedSingles extends Plugin
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
+            /* @var Settings $settings */
+            $settings = $this->getSettings();
+
             // Have we enabled the plugin?
-            if ($this->getSettings()->expandSingles) {
+            if ($settings->expandSingles) {
                 // Are there any Singles at all?
                 foreach ($event->sources as $source) {
                     if (array_key_exists('key', $source) && $source['key'] === 'singles') {
@@ -67,8 +70,11 @@ class ExpandedSingles extends Plugin
         // Hook onto a special hook from Redactor - it handles singles a little differently!
         if (class_exists(RedactorField::class)) {
             Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
+                /* @var Settings $settings */
+                $settings = $this->getSettings();
+
                 // Have we enabled the plugin?
-                if ($this->getSettings()->expandSingles) {
+                if ($settings->expandSingles) {
                     foreach ($event->linkOptions as $i => $linkOption) {
                         // Only apply this for entries, and if there are any singles
                         if ($linkOption['refHandle'] === 'entry' && in_array('singles', $linkOption['sources'])) {

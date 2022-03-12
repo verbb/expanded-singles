@@ -2,6 +2,7 @@
 namespace verbb\expandedsingles\controllers;
 
 use verbb\expandedsingles\ExpandedSingles;
+use verbb\expandedsingles\models\Settings;
 
 use craft\web\Controller;
 
@@ -14,6 +15,7 @@ class DefaultController extends Controller
 
     public function actionSettings(): Response
     {
+        /* @var Settings $settings */
         $settings = ExpandedSingles::$plugin->getSettings();
 
         return $this->renderTemplate('expanded-singles/settings', [
