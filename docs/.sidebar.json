@@ -14,12 +14,5 @@
         "children": [
             "feature-tour/expanded-singles"
         ]
-    },
-    {
-        "title": "Support",
-        "collapsable": false,
-        "children": [
-            "support/get-support"
-        ]
     }
 ]
