@@ -12,7 +12,7 @@ return [
 ];
 ```
 
-### Configuration options
+## Configuration options
 - `expandSingles` - Expands the Singles link on the Entries page to list them like Channels and Structures.
 - `redirectToEntry` - Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.
 

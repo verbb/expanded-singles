@@ -1,7 +1,7 @@
 # Requirements
 
-### Craft CMS
+## Craft CMS
 Expanded Singles requires Craft CMS 3.5 or greater.
 
-### PHP
+## PHP
 Expanded Singles requires PHP 7.2.5 or greater.
