@@ -3,12 +3,11 @@ namespace verbb\expandedsingles\base;
 
 use verbb\expandedsingles\ExpandedSingles;
 use verbb\expandedsingles\services\SinglesList;
+use verbb\base\BaseHelper;
 
 use Craft;
 
 use yii\log\Logger;
-
-use verbb\base\BaseHelper;
 
 trait PluginTrait
 {
@@ -21,13 +20,17 @@ trait PluginTrait
     // Static Methods
     // =========================================================================
 
-    public static function log($message): void
+    public static function log(string $message, array $params = []): void
     {
+        $message = Craft::t('expanded-singles', $message, $params);
+
         Craft::getLogger()->log($message, Logger::LEVEL_INFO, 'expanded-singles');
     }
 
-    public static function error($message): void
+    public static function error(string $message, array $params = []): void
     {
+        $message = Craft::t('expanded-singles', $message, $params);
+
         Craft::getLogger()->log($message, Logger::LEVEL_ERROR, 'expanded-singles');
     }
 
@@ -44,7 +47,7 @@ trait PluginTrait
     // Private Methods
     // =========================================================================
 
-    private function _setPluginComponents(): void
+    private function _registerComponents(): void
     {
         $this->setComponents([
             'singlesList' => SinglesList::class,
@@ -53,7 +56,7 @@ trait PluginTrait
         BaseHelper::registerModule();
     }
 
-    private function _setLogging(): void
+    private function _registerLogTarget(): void
     {
         BaseHelper::setFileLogging('expanded-singles');
     }
