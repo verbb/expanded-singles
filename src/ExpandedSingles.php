@@ -45,11 +45,12 @@ class ExpandedSingles extends Plugin
 
         $this->_registerComponents();
         $this->_registerLogTarget();
-        $this->_registerCpRoutes();
 
         if (!Craft::$app->getRequest()->getIsCpRequest()) {
             return;
         }
+        
+        $this->_registerCpRoutes();
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
