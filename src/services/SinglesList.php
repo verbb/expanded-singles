@@ -47,7 +47,7 @@ class SinglesList extends Component
                     }
                 }
 
-                if ($siteUrls && Craft::$app->getUser()->checkPermission('editEntries:' . $single->uid)) {
+                if ($siteUrls && Craft::$app->getUser()->checkPermission('viewEntries:' . $single->uid)) {
                     $singles[] = [
                         'key' => 'single:' . $single->uid,
                         'label' => Craft::t('site', $single->name),
