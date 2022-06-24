@@ -40,7 +40,7 @@ class SinglesList extends Component
             // Create list of Singles
             foreach ($singleSections as $single) {
                 $siteUrls = [];
-                
+
                 foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
                     $siteEntry = Entry::find()
                         ->siteId($siteId)
@@ -66,7 +66,7 @@ class SinglesList extends Component
                         'criteria' => [
                             'sectionId' => $single->id,
                             'editable' => false,
-                        ]
+                        ],
                     ];
                 }
             }
@@ -103,7 +103,7 @@ class SinglesList extends Component
         foreach ($sections as $section) {
             if ($section->type === Section::TYPE_SINGLE) {
                 $sectionSiteSettings = $section->getSiteSettings();
-                
+
                 foreach ($sites as $site) {
                     if (isset($sectionSiteSettings[$site->id]) && $sectionSiteSettings[$site->id]->hasUrls) {
                         $singles[] = 'single:' . $section->uid;

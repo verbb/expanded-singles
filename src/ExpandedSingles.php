@@ -52,7 +52,7 @@ class ExpandedSingles extends Plugin
 
         // Modified the entry index sources
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
-            
+
             // Have we enabled the plugin?
             if ($this->getSettings()->expandSingles) {
 
@@ -68,7 +68,7 @@ class ExpandedSingles extends Plugin
         // Hook onto a special hook from Redactor - it handles singles a little differently!
         if (class_exists(RedactorField::class)) {
             Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
-                
+
                 // Have we enabled the plugin?
                 if ($this->getSettings()->expandSingles) {
 
