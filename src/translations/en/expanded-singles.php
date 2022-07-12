@@ -1,6 +1,6 @@
 <?php
 
-return array (
+return [
 	'Expanded Singles' => 'Expanded Singles',
 	'Settings' => 'Settings',
 	'Expand Singles' => 'Expand Singles',
@@ -8,4 +8,4 @@ return array (
 	'Redirect to Entry' => 'Redirect to Entry',
 	'Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.' => 'Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.',
 	'Singles' => 'Singles',
-);
+];
