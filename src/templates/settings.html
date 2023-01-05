@@ -2,6 +2,8 @@
 {% import '_includes/forms' as forms %}
 {% import 'verbb-base/_macros' as macros %}
 
+{% requireAdmin %}
+
 {% set crumbs = [
     { label: 'Expanded Singles' | t('expanded-singles'), url: url('expanded-singles/settings') },
     { label: 'Settings' | t('app'), url: url('expanded-singles/settings') }
