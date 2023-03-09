@@ -59,7 +59,6 @@ class SinglesList extends Component
                         ],
                         'criteria' => [
                             'sectionId' => $single->id,
-                            'editable' => false,
                         ],
                     ];
                 }
