@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1 - 2023-03-10
+
+### Changed
+- Only admins are now allowed to access plugin settings.
+
+### Fixed
+- Fix an error on Craft 4.4+ where singles won’t appearing.
+
 ## 2.0.0 - 2022-07-10
 
 ### Added
