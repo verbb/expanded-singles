@@ -1,6 +1,6 @@
 # Expanded Singles Plugin for Craft CMS 3
 
-<img width="500" src="https://verbb.io/uploads/plugins/expanded-singles/expanded-singles-social-card.png?v=1">
+<img width="500" src="https://verbb.imgix.net/plugins/expanded-singles/expanded-singles-social-card.png?v=1">
 
 A simple plugin for Craft CMS that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.
 
@@ -9,7 +9,7 @@ A simple plugin for Craft CMS that alters the Entries Index sidebar to list all 
 - Change the 'Singles' menu item in the entry index to show all singles.
 - Unlimited use, free forever.
 
-<img src="https://verbb.io/uploads/plugins/v0/expanded-singles.png" style="box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-radius: 4px; border: 1px solid rgba(0,0,0,0.12);">
+<img src="https://verbb.imgix.net/plugins/v0/expanded-singles.png" style="box-shadow: 0 4px 16px rgba(0,0,0,0.08); border-radius: 4px; border: 1px solid rgba(0,0,0,0.12);">
 
 ## Documentation
 
