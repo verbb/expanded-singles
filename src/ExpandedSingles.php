@@ -14,6 +14,8 @@ use craft\events\RegisterUrlRulesEvent;
 use craft\helpers\UrlHelper;
 use craft\web\UrlManager;
 
+use craft\ckeditor\events\DefineLinkOptionsEvent;
+use craft\ckeditor\Field as CkEditorField;
 use craft\redactor\events\RegisterLinkOptionsEvent;
 use craft\redactor\Field as RedactorField;
 
@@ -71,6 +73,28 @@ class ExpandedSingles extends Plugin
         // Hook onto a special hook from Redactor - it handles singles a little differently!
         if (class_exists(RedactorField::class)) {
             Event::on(RedactorField::class, RedactorField::EVENT_REGISTER_LINK_OPTIONS, function(RegisterLinkOptionsEvent $event) {
+                /* @var Settings $settings */
+                $settings = $this->getSettings();
+
+                // Have we enabled the plugin?
+                if ($settings->expandSingles) {
+                    foreach ($event->linkOptions as $i => $linkOption) {
+                        // Only apply this for entries, and if there are any singles
+                        if ($linkOption['refHandle'] === 'entry' && in_array('singles', $linkOption['sources'])) {
+                            $modifiedSources = $this->getSinglesList()->createSectionedSinglesList($linkOption['sources']);
+
+                            if ($modifiedSources) {
+                                $event->linkOptions[$i]['sources'] = $modifiedSources;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Hook onto a special hook from CKEditor - it handles singles a little differently!
+        if (class_exists(CkEditorField::class)) {
+            Event::on(CkEditorField::class, CkEditorField::EVENT_DEFINE_LINK_OPTIONS, function(DefineLinkOptionsEvent $event) {
                 /* @var Settings $settings */
                 $settings = $this->getSettings();
 
