@@ -42,11 +42,12 @@ class SinglesList extends Component
                 $siteUrls = [];
 
                 foreach (Craft::$app->getSites()->getAllSiteIds() as $key => $siteId) {
-                    $siteEntry = Entry::find()
-                        ->siteId($siteId)
-                        ->status(null)
-                        ->sectionId($single->id)
-                        ->one();
+                    // Don't do an element query here, which hurts performance. We just want the cpEditUrl.
+                    // https://github.com/verbb/expanded-singles/issues/34
+                    $siteEntry = new Entry([
+                        'siteId' => $siteId,
+                        'sectionId' => $single->id,
+                    ]);
 
                     if ($siteEntry) {
                         $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
