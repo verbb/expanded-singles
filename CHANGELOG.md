@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.2 - 2023-07-11
+
+### Added
+- Add support for CKEditor plugin.
+
+### Changed
+- Improve performance of element index.
+
 ## 2.0.1 - 2023-03-10
 
 ### Changed
