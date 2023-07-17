@@ -7,6 +7,7 @@ use verbb\expandedsingles\assetbundles\ExpandedSinglesAsset;
 use Craft;
 use craft\base\Component;
 use craft\elements\Entry;
+use craft\helpers\ArrayHelper;
 use craft\helpers\Json;
 use craft\models\Section;
 use craft\events\RegisterElementSourcesEvent;
@@ -32,6 +33,9 @@ class SinglesList extends Component
             // Grab all the Singles
             $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
 
+            // Fetch all single entries for their IDs (direct db call for performance)
+            $singleEntries = $this->_getSingleEntries($singleSections);
+
             // Create list of Singles
             foreach ($singleSections as $single) {
                 $siteUrls = [];
@@ -39,10 +43,7 @@ class SinglesList extends Component
                 foreach (Craft::$app->getSites()->getAllSiteIds() as $siteId) {
                     // Don't do an element query here, which hurts performance. We just want the cpEditUrl.
                     // https://github.com/verbb/expanded-singles/issues/34
-                    $siteEntry = new Entry([
-                        'siteId' => $siteId,
-                        'sectionId' => $single->id,
-                    ]);
+                    $siteEntry = $singleEntries[$single->id . ':' . $siteId] ?? null;
 
                     if ($siteEntry) {
                         $siteUrls[$siteId] = $siteEntry->getCpEditUrl();
@@ -107,5 +108,22 @@ class SinglesList extends Component
         array_splice($sources, 0, 1, $singles);
 
         return $sources;
+    }
+
+
+    // Private Methods
+    // =========================================================================
+
+    private function _getSingleEntries($singleSections): array
+    {
+        $singles = [];
+
+        $singleEntries = Entry::find()->sectionId(ArrayHelper::getColumn($singleSections, 'id'))->all();
+
+        foreach ($singleEntries as $singleEntry) {
+            $singles[$singleEntry->sectionId . ':' . $singleEntry->siteId] = $singleEntry;
+        }
+
+        return $singles;
     }
 }
