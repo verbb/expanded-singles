@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.3 - 2023-07-17
+
+### Fixed
+- Fix “Redirect to Entry” not working correctly.
+
 ## 2.0.2 - 2023-07-11
 
 ### Added

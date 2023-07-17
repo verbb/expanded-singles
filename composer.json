@@ -2,7 +2,7 @@
     "name": "verbb/expanded-singles",
     "description": "Extract Single entries to be top-level entries.",
     "type": "craft-plugin",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "keywords": [
         "craft",
         "cms",
