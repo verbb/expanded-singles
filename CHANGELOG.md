@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.4 - 2023-07-21
+
+### Fixed
+- Fix an issue where disabled singles weren't shown, after 2.0.3. (thanks @janhenckens).
+
 ## 2.0.3 - 2023-07-17
 
 ### Fixed
