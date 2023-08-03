@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.5 - 2023-08-03
+
+### Fixed
+- Fix multi-site singles not appearing.
+
 ## 2.0.4 - 2023-07-21
 
 ### Fixed
