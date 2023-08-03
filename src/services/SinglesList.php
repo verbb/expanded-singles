@@ -118,7 +118,11 @@ class SinglesList extends Component
     {
         $singles = [];
 
-        $singleEntries = Entry::find()->sectionId(ArrayHelper::getColumn($singleSections, 'id'))->status(null)->all();
+        $singleEntries = Entry::find()
+            ->sectionId(ArrayHelper::getColumn($singleSections, 'id'))
+            ->siteId('*')
+            ->status(null)
+            ->all();
 
         foreach ($singleEntries as $singleEntry) {
             $singles[$singleEntry->sectionId . ':' . $singleEntry->siteId] = $singleEntry;
