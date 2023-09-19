@@ -1,5 +1,5 @@
 # Expanded Singles plugin for Craft CMS
-<img width="500" src="https://verbb.imgix.net/plugins/expanded-singles/expanded-singles-social-card.png?v=1">
+<img width="500" src="https://verbb.imgix.net/plugins/expanded-singles/expanded-singles-social-card.png?v=2">
 
 Expanded Singles is a Craft CMS plugin that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.
 
