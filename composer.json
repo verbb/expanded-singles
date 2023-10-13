@@ -2,7 +2,7 @@
     "name": "verbb/expanded-singles",
     "description": "Extract Single entries to be top-level entries.",
     "type": "craft-plugin",
-    "version": "2.0.5",
+    "version": "3.0.0-beta.1",
     "keywords": [
         "craft",
         "cms",
@@ -25,13 +25,13 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
-        "craftcms/cms": "^4.0.0",
-        "verbb/base": "^2.0.0"
+        "php": "^8.2",
+        "craftcms/cms": "^5.0.0-alpha.1",
+        "verbb/base": "^3.0.0-beta.1"
     },
     "autoload": {
         "psr-4": {
-          "verbb\\expandedsingles\\": "src/"
+            "verbb\\expandedsingles\\": "src/"
         }
     },
     "extra": {
@@ -39,7 +39,7 @@
         "handle": "expanded-singles",
         "description": "Alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
         "documentationUrl": "https://github.com/verbb/expanded-singles",
-        "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-4/CHANGELOG.md",
+        "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-5/CHANGELOG.md",
         "class": "verbb\\expandedsingles\\ExpandedSingles"
     }
 }

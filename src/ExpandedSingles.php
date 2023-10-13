@@ -44,10 +44,7 @@ class ExpandedSingles extends Plugin
         parent::init();
 
         self::$plugin = $this;
-
-        $this->_registerComponents();
-        $this->_registerLogTarget();
-
+        
         if (!Craft::$app->getRequest()->getIsCpRequest()) {
             return;
         }

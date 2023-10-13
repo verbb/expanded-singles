@@ -31,7 +31,7 @@ class SinglesList extends Component
             $singles[] = ['heading' => Craft::t('app', 'Singles')];
 
             // Grab all the Singles
-            $singleSections = Craft::$app->sections->getSectionsByType(Section::TYPE_SINGLE);
+            $singleSections = Craft::$app->getEntries()->getSectionsByType(Section::TYPE_SINGLE);
 
             // Fetch all single entries for their IDs (direct db call for performance)
             $singleEntries = $this->_getSingleEntries($singleSections);
@@ -86,7 +86,7 @@ class SinglesList extends Component
      */
     public function createSectionedSinglesList(array $sources): array
     {
-        $sections = Craft::$app->getSections()->getAllSections();
+        $sections = Craft::$app->getEntries()->getAllSections();
 
         $sites = Craft::$app->getSites()->getAllSites();
 
