@@ -44,14 +44,9 @@ class ExpandedSingles extends Plugin
         parent::init();
 
         self::$plugin = $this;
-        
-        if (!Craft::$app->getRequest()->getIsCpRequest()) {
-            return;
-        }
-        
-        $this->_registerCpRoutes();
 
-        // Modified the entry index sources
+        // Modified the entry index sources. Note that this can be for non-CP requests for things like Formie
+        // where we use the sources of an entry for the Entries field on the front-end for an Entries field.
         Event::on(Entry::class, Element::EVENT_REGISTER_SOURCES, function(RegisterElementSourcesEvent $event) {
             /* @var Settings $settings */
             $settings = $this->getSettings();
@@ -66,6 +61,12 @@ class ExpandedSingles extends Plugin
                 }
             }
         });
+        
+        if (!Craft::$app->getRequest()->getIsCpRequest()) {
+            return;
+        }
+        
+        $this->_registerCpRoutes();
 
         // Hook onto a special hook from Redactor - it handles singles a little differently!
         if (class_exists(RedactorField::class)) {
