@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0-beta.2 - 2024-03-27
+
+### Fixed
+- Fix a compatibility issue with Formie and Entries fields.
+
 ## 3.0.0-beta.1 - 2024-03-04
 
 ### Changed
