@@ -75,7 +75,10 @@ class SinglesList extends Component
 
         // Insert some JS to go straight to single page when clicked - rather than listing in Index Table
         if (ExpandedSingles::$plugin->getSettings()->redirectToEntry) {
-            Craft::$app->getView()->registerAssetBundle(ExpandedSinglesAsset::class);
+            // Only output this for CP-requests, as this can be called from the front-end.
+            if (Craft::$app->getRequest()->getIsCpRequest()) {
+                Craft::$app->getView()->registerAssetBundle(ExpandedSinglesAsset::class);
+            }
         }
     }
 
