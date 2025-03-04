@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.2 - 2025-03-05
+
+### Fixed
+- Fix keyboard accessibility for singles links.
+
 ## 3.0.1 - 2024-10-20
 
 ### Fixed
