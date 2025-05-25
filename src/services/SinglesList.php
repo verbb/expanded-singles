@@ -27,6 +27,12 @@ class SinglesList extends Component
     {
         $singles = [];
 
+        // Just skip for the native Link field
+        // https://github.com/verbb/expanded-singles/issues/44
+        if ($event->context === 'field') {
+            return;
+        }
+
         if (!$this->singles) {
             $singles[] = ['heading' => Craft::t('app', 'Singles')];
 
