@@ -12,4 +12,8 @@
     right: 0;
     z-index: 10;
     color: transparent !important;
+
+    &:hover {
+        color: var(--text-color) !important;
+    }
 };
