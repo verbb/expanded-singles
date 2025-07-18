@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.3 - 2025-07-18
+
+### Fixed
+- Fix menu item color.
+
 ## 3.0.2 - 2025-03-05
 
 ### Fixed
