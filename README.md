@@ -1,4 +1,4 @@
-<p align="center"><img src="https://verbb.imgix.net/plugins/expanded-singles/expanded-singles-icon.svg" width="100" height="100" alt="Expanded Singles icon"></p>
+<p align="center"><img src="https://assets.verbb.io/plugins/expanded-singles/expanded-singles-icon.svg" width="100" height="100" alt="Expanded Singles icon"></p>
 <h1 align="center">Expanded Singles for Craft CMS</h1>
 
 Expanded Singles is a Craft CMS plugin that alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.
