@@ -1,26 +1,16 @@
-{% extends 'expanded-singles/_layouts' %}
+{% extends 'expanded-singles/_layouts/settings' %}
+
 {% import '_includes/forms' as forms %}
 {% import 'verbb-base/_macros' as macros %}
 
-{% requireAdmin %}
-
-{% set crumbs = [
-    { label: 'Expanded Singles' | t('expanded-singles'), url: url('expanded-singles/settings') },
-    { label: 'Settings' | t('app'), url: url('expanded-singles/settings') }
-] %}
-
-{% set selectedTab = 'settings' %}
 {% set fullPageForm = true %}
+{% set selectedTab = 'general' %}
+{% set pageTitle = 'General Settings' | t('expanded-singles') %}
+{% set pageAction = 'plugins/save-plugin-settings' %}
+{% set pageUrl = 'expanded-singles/settings' %}
 
-{% block blockContent %}
-
-<input type="hidden" name="action" value="plugins/save-plugin-settings">
-<input type="hidden" name="pluginHandle" value="expanded-singles">
-
-{% namespace 'settings' %}
-
+{% block settingsContent %}
 {{ forms.lightswitchField({
-    first: true,
     id: 'expandSingles',
     name: 'expandSingles',
     label: 'Expand Singles' | t('expanded-singles'),
@@ -37,7 +27,4 @@
     instructions: 'Automatically redirects to edit the Single Entry when clicking on the item in the sidebar.' | t('expanded-singles'),
     warning: macros.configWarning('redirectToEntry', 'expanded-singles'),
 }) }}
-
-{% endnamespace %}
-
 {% endblock %}
