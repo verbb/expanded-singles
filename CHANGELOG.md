@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- Updated documentation for clearer, more consistent guidance.
+- Clarified optional PHP configuration with focused examples and linkable setting details.
+
 ## 3.0.4 - 2026-09-13
 
 ### Changed
