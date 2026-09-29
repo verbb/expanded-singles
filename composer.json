@@ -1,6 +1,6 @@
 {
     "name": "verbb/expanded-singles",
-    "description": "Extract Single entries to be top-level entries.",
+    "description": "A Craft CMS plugin that lists Single sections individually in the Entries sidebar.",
     "type": "craft-plugin",
     "version": "3.0.5",
     "keywords": [
@@ -37,7 +37,6 @@
     "extra": {
         "name": "Expanded Singles",
         "handle": "expanded-singles",
-        "description": "Alters the Entries Index sidebar to list all Singles, rather than grouping them under a 'Singles' link.",
         "documentationUrl": "https://github.com/verbb/expanded-singles",
         "changelogUrl": "https://raw.githubusercontent.com/verbb/expanded-singles/craft-5/CHANGELOG.md",
         "class": "verbb\\expandedsingles\\ExpandedSingles"
