@@ -2,7 +2,7 @@
     "name": "verbb/expanded-singles",
     "description": "A Craft CMS plugin that lists Single sections individually in the Entries sidebar.",
     "type": "craft-plugin",
-    "version": "3.0.5",
+    "version": "3.0.6",
     "keywords": [
         "craft",
         "cms",
