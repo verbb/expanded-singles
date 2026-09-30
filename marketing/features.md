@@ -7,5 +7,5 @@ A small Craft plugin that lists Single sections directly in the Entries sidebar 
 
 Expanded Singles brings each Single out into its own sidebar item, using the section name editors already recognise. Rearrange them with Craft’s own sidebar customisation and optionally go straight to the entry when an index would only add another click.
 
-![Craft 5’s Entries index with About Us, Contact, Homepage, Landing Page and News Index shown directly in the source navigation.](../screenshots/output/feature-tour/expanded-singles-craft5-sidebar.png)
+![Craft 5’s Entries index with About Us, Contact, Homepage, Landing Page and News Index shown directly in the source navigation.](../screenshots/expanded-singles-craft5-sidebar.png)
 <!-- feature-media-end -->
