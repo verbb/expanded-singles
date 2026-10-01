@@ -61,11 +61,11 @@ class ExpandedSingles extends Plugin
                 }
             }
         });
-        
+
         if (!Craft::$app->getRequest()->getIsCpRequest()) {
             return;
         }
-        
+
         $this->_registerCpRoutes();
 
         // Hook onto a special hook from Redactor - it handles singles a little differently!
