@@ -33,14 +33,22 @@ class SinglesList extends Component
             // Grab all the Singles
             $singleSections = Craft::$app->getEntries()->getSectionsByType(Section::TYPE_SINGLE);
 
+            // Keep both the entry query and rendered source metadata within the user's editable sites.
+            $sitesService = Craft::$app->getSites();
+            $siteIds = array_values(array_intersect(
+                $sitesService->getAllSiteIds(),
+                $sitesService->getEditableSiteIds(),
+            ));
+
             // Fetch all single entries for their IDs (direct db call for performance)
-            $singleEntries = $this->_getSingleEntries($singleSections);
+            $singleEntries = $this->_getSingleEntries($singleSections, $siteIds);
 
             // Create list of Singles
             foreach ($singleSections as $single) {
                 $siteUrls = [];
+                $singleSiteIds = array_values(array_intersect($single->getSiteIds(), $siteIds));
 
-                foreach (Craft::$app->getSites()->getAllSiteIds() as $siteId) {
+                foreach ($singleSiteIds as $siteId) {
                     // Don't do an element query here, which hurts performance. We just want the cpEditUrl.
                     // https://github.com/verbb/expanded-singles/issues/34
                     $siteEntry = $singleEntries[$single->id . ':' . $siteId] ?? null;
@@ -57,7 +65,7 @@ class SinglesList extends Component
                         'data' => [
                             'cp-nav' => true,
                             'handle' => $single->handle,
-                            'sites' => implode(',', $single->getSiteIds()),
+                            'sites' => implode(',', $singleSiteIds),
                             'site-urls' => Json::encode($siteUrls),
                         ],
                         'criteria' => [
@@ -117,13 +125,18 @@ class SinglesList extends Component
     // Private Methods
     // =========================================================================
 
-    private function _getSingleEntries($singleSections): array
+    private function _getSingleEntries(array $singleSections, array $siteIds): array
     {
         $singles = [];
 
+        // An empty siteId criterion falls back to the current site, so stop before querying.
+        if (!$siteIds) {
+            return $singles;
+        }
+
         $singleEntries = Entry::find()
             ->sectionId(ArrayHelper::getColumn($singleSections, 'id'))
-            ->siteId('*')
+            ->siteId($siteIds)
             ->status(null)
             ->all();
 
