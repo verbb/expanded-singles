@@ -3,6 +3,7 @@
 ## Unreleased
 
 ### Fixed
+- Fixed a low-severity cross-site scripting (XSS) vulnerability.
 - Fixed a low-severity information disclosure vulnerability.
 
 ## 3.0.7 - 2026-10-02

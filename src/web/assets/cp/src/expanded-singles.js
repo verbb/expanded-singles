@@ -30,7 +30,15 @@
             if ($link.length) {
                 $link.attr('href', url);
             } else {
-                $link = $('<a class="cp-nav-link-mask" role="button" tabindex="0" aria-current="false" href="' + url + '">' + $(this).text() + '</a>');
+                $link = $('<a>')
+                    .addClass('cp-nav-link-mask')
+                    .attr({
+                        role: 'button',
+                        tabindex: '0',
+                        'aria-current': 'false',
+                        href: url,
+                    })
+                    .text($(this).text());
                 $(this).parent().append($link);
             }
 
@@ -46,4 +54,3 @@
     }, this));
 
 })(jQuery);
-
