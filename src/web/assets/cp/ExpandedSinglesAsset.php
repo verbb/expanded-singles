@@ -1,10 +1,10 @@
 <?php
-namespace verbb\expandedsingles\assetbundles;
+namespace verbb\expandedsingles\web\assets\cp;
 
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
-use verbb\base\assetbundles\CpAsset as VerbbCpAsset;
+use verbb\base\web\assets\cp\CpAsset as VerbbCpAsset;
 
 class ExpandedSinglesAsset extends AssetBundle
 {
@@ -13,7 +13,7 @@ class ExpandedSinglesAsset extends AssetBundle
 
     public function init(): void
     {
-        $this->sourcePath = "@verbb/expandedsingles/resources/dist";
+        $this->sourcePath = '@verbb/expandedsingles/web/assets/cp/dist';
 
         $this->depends = [
             VerbbCpAsset::class,
@@ -21,11 +21,11 @@ class ExpandedSinglesAsset extends AssetBundle
         ];
 
         $this->css = [
-            'css/expanded-singles.css',
+            'expanded-singles.css',
         ];
 
         $this->js = [
-            'js/expanded-singles.js',
+            'expanded-singles.js',
         ];
 
         parent::init();

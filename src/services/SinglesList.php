@@ -2,7 +2,7 @@
 namespace verbb\expandedsingles\services;
 
 use verbb\expandedsingles\ExpandedSingles;
-use verbb\expandedsingles\assetbundles\ExpandedSinglesAsset;
+use verbb\expandedsingles\web\assets\cp\ExpandedSinglesAsset;
 
 use Craft;
 use craft\base\Component;
