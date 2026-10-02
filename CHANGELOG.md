@@ -1,10 +1,9 @@
 # Changelog
 
-## Unreleased
+## 3.0.7 - 2026-10-02
 
 ### Changed
 - Updated the required version of `verbb/base` to 3.0.19.
-- Replaced the CodeKit asset build with Vite and moved web assets to `src/web`.
 
 ## 3.0.6 - 2026-09-30
 
