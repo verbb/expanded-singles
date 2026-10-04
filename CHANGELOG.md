@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.0.8 - 2026-10-05
 
 ### Fixed
 - Fixed a low-severity cross-site scripting (XSS) vulnerability.
