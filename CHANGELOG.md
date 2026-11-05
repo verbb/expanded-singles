@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- Fixed link modal sources replacing “All entries” instead of “Singles”, and listing each single once per site.
+- Fixed the default layout title using the wrong translation category.
+
 ## 3.0.10 - 2026-10-22
 
 ### Changed
