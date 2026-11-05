@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.0.11 - 2026-11-05
 
 ### Fixed
 - Fixed link modal sources replacing “All entries” instead of “Singles”, and listing each single once per site.
