@@ -110,13 +110,19 @@ class SinglesList extends Component
                 foreach ($sites as $site) {
                     if (isset($sectionSiteSettings[$site->id]) && $sectionSiteSettings[$site->id]->hasUrls) {
                         $singles[] = 'single:' . $section->uid;
+
+                        break;
                     }
                 }
             }
         }
 
         // Replace original Singles link with new singles list
-        array_splice($sources, 0, 1, $singles);
+        $singlesIndex = array_search('singles', $sources, true);
+
+        if ($singlesIndex !== false) {
+            array_splice($sources, $singlesIndex, 1, $singles);
+        }
 
         return $sources;
     }
